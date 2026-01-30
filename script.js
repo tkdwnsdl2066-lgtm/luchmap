@@ -50,3 +50,27 @@ function pickRandomPlace(places) {
     link.href = place.place_url;
     link.innerText = "카카오맵에서 보기";
 }
+
+function getMyLocation() {
+    console.log("버튼 클릭됨");
+
+    if (!navigator.geolocation) {
+        alert("위치 정보를 지원하지 않는 브라우저입니다.");
+        return;
+    }
+
+    document.getElementById("status").innerText = "📡 위치 가져오는 중...";
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log("위치 성공", position.coords);
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            searchRestaurants(lat, lng);
+        },
+        (error) => {
+            console.log("위치 실패", error);
+            alert("위치 권한을 허용해주세요.");
+        }
+    );
+}
