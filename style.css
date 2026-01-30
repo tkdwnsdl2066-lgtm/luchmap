@@ -1,83 +1,68 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    margin: 0;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  margin: 0;
+  padding: 0;
 }
 
-/* 전체 레이아웃 */
 .container {
-    min-height: 100vh;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;     /* 가로 가운데 */
-    justify-content: center; /* 세로 가운데 */
-    text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  text-align: center;
 }
 
-/* 제목 */
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-/* 버튼 */
 button {
-    width: 100%;
-    max-width: 320px;
-    font-size: 18px;
-    padding: 14px 0;
-    border: none;
-    border-radius: 12px;
-    background-color: #ffcd00; /* 카카오 느낌 */
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #ffcd00;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
-/* 결과 영역 */
 #result {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 320px;
+  margin-top: 24px;
 }
 
-/* 상태 텍스트 */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
 #status {
-    font-size: 16px;
-    margin-bottom: 10px;
+  color: #666;
+  margin-bottom: 12px;
 }
 
-/* 음식점 이름 */
 #placeName {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 10px 0;
+  font-size: 22px;
+  margin: 8px 0;
 }
 
-/* 거리 */
 #distance {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 12px;
+  color: #888;
+  margin-bottom: 16px;
 }
 
-/* 링크 버튼처럼 */
-a {
-    display: inline-block;
-    width: 100%;
-    padding: 12px 0;
-    border-radius: 10px;
-    background-color: #0066cc;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
+#mapLink {
+  display: inline-block;
+  padding: 12px 16px;
+  background: #3c1e1e;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
