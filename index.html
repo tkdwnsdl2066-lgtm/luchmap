@@ -4,29 +4,19 @@
   <meta charset="UTF-8" />
   <title>점심 메뉴 추천</title>
 
-  <!-- 1️⃣ 카카오 지도 SDK 먼저 -->
-  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d92ced3d51774894002d4221f8fdfb1e&libraries=services"></script>
+  <!-- 카카오 지도 SDK (JS 키!) -->
+  <script
+    src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d92ced3d51774894002d4221f8fdfb1e&libraries=services"
+  ></script>
 
-  <!-- 2️⃣ 그 다음에 내 스크립트 -->
+  <!-- 내 스크립트는 반드시 아래 -->
   <script defer src="script.js"></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div class="container">
-    <h1>📍 근처 점심 추천</h1>
-
-    <button onclick="getMyLocation()">내 위치로 음식점 찾기</button>
-
-    <div id="result">
-        <p id="status">아직 추천 안 됨</p>
-        <h2 id="placeName"></h2>
-        <p id="distance"></p>
-        <a id="mapLink" target="_blank"></a>
-    </div>
-</div>
-
-<script src="script.js"></script>
+  <h1>점심 메뉴 추천</h1>
+  <div id="map" style="width:100%;height:300px;"></div>
+  <div id="result">위치 가져오는 중...</div>
 </body>
 </html>
