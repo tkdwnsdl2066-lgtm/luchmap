@@ -1,34 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
 }
 
+/* 전체 레이아웃 */
 .container {
+    min-height: 100vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* 가로 가운데 */
+    justify-content: center; /* 세로 가운데 */
     text-align: center;
-    margin-top: 100px;
 }
 
+/* 제목 */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 버튼 */
 button {
+    width: 100%;
+    max-width: 320px;
     font-size: 18px;
-    padding: 15px 30px;
+    padding: 14px 0;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffcd00; /* 카카오 느낌 */
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
 }
 
-#result {
-    margin-top: 40px;
+button:active {
+    transform: scale(0.98);
 }
 
+/* 결과 영역 */
+#result {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 320px;
+}
+
+/* 상태 텍스트 */
+#status {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* 음식점 이름 */
 #placeName {
-    font-size: 26px;
+    font-size: 22px;
+    font-weight: bold;
     margin: 10px 0;
 }
 
+/* 거리 */
 #distance {
-    font-size: 18px;
+    font-size: 14px;
     color: #555;
+    margin-bottom: 12px;
 }
 
+/* 링크 버튼처럼 */
 a {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 10px;
+    background-color: #0066cc;
+    color: #fff;
+    text-decoration: none;
     font-size: 16px;
-    color: #0066cc;
 }
