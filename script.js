@@ -15,8 +15,11 @@ function getMyLocation() {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
 
-            // ✅ 카카오 SDK 완전히 로드된 후 실행
             kakao.maps.load(() => {
+                if (!kakao.maps.services) {
+                    alert("카카오 장소 서비스가 로드되지 않았습니다.");
+                    return;
+                }
                 searchRestaurants(lat, lng);
             });
         },
@@ -31,11 +34,11 @@ function searchRestaurants(lat, lng) {
     const ps = new kakao.maps.services.Places();
 
     ps.categorySearch(
-        "FD6",
+        "FD6", // 음식점
         (data, status) => {
             if (status !== kakao.maps.services.Status.OK || data.length === 0) {
                 document.getElementById("status").innerText =
-                    "❌ 음식점을 찾을 수 없습니다.";
+                    "❌ 주변에 음식점이 없습니다.";
                 return;
             }
 
