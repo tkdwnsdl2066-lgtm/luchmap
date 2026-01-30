@@ -1,3 +1,4 @@
+console.log('kakao services:', kakao.maps.services);
 function getMyLocation() {
     console.log("버튼 클릭됨");
 
@@ -31,24 +32,31 @@ function getMyLocation() {
 }
 
 function searchRestaurants(lat, lng) {
-    const ps = new kakao.maps.services.Places();
+  if (!kakao.maps.services) {
+    alert('카카오 services 로드 안됨');
+    return;
+  }
 
-    ps.categorySearch(
-        "FD6", // 음식점
-        (data, status) => {
-            if (status !== kakao.maps.services.Status.OK || data.length === 0) {
-                document.getElementById("status").innerText =
-                    "❌ 주변에 음식점이 없습니다.";
-                return;
-            }
+  const ps = new kakao.maps.services.Places();
 
-            pickRandomPlace(data);
-        },
-        {
-            location: new kakao.maps.LatLng(lat, lng),
-            radius: 1000,
-        }
-    );
+  const location = new kakao.maps.LatLng(lat, lng);
+
+  ps.categorySearch(
+    'FD6', // 음식점
+    function (data, status) {
+      if (status !== kakao.maps.services.Status.OK) {
+        alert('검색 실패');
+        return;
+      }
+
+      const random = data[Math.floor(Math.random() * data.length)];
+      alert(`오늘의 점심: ${random.place_name}`);
+    },
+    {
+      location: location,
+      radius: 500,
+    }
+  );
 }
 
 function pickRandomPlace(places) {
