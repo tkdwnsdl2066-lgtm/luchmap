@@ -5,14 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>점심 메뉴 추천</title>
 
-
-  
   <!-- 카카오 지도 SDK (JS 키!) -->
   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d92ced3d51774894002d4221f8fdfb1e&libraries=services"></script>
   
   <!-- 내 스크립트 -->
   <script defer src="script.js"></script>
-
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -22,24 +19,24 @@
     <button onclick="getMyLocation()">내 위치로 음식점 찾기</button>
 
     <div id="result">
-  <div class="card">
-    <p id="status">버튼을 눌러 위치를 가져오세요</p>
-    <h2 id="placeName"></h2>
-    <p id="distance"></p>
-    <a id="mapLink" target="_blank"></a>
+      <div class="card">
+        <p id="status">버튼을 눌러 위치를 가져오세요</p>
+        <h2 id="placeName"></h2>
+        <p id="distance"></p>
+        <a id="mapLink" target="_blank"></a>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- 추천 식당 모달 -->
+  <div id="recommendModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalPlaceName"></h2>
+      <p id="modalCategory"></p>
+      <p id="modalDistance"></p>
+      <a id="modalMapLink" target="_blank">카카오맵에서 보기</a>
+    </div>
   </div>
-<!-- 기존 코드 위에 모달 추가 -->
-<div id="recommendModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="modalPlaceName"></h2>
-    <p id="modalCategory"></p>
-    <p id="modalDistance"></p>
-    <a id="modalMapLink" target="_blank">카카오맵에서 보기</a>
-  </div>
-</div>
-  
 </body>
 </html>
