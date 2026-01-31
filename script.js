@@ -64,7 +64,7 @@ function searchRestaurants(lat, lng) {
         },
         {
             location: location,
-            radius: 500, // 500m 반경
+            radius: 500,
             size: 15
         }
     );
@@ -73,9 +73,9 @@ function searchRestaurants(lat, lng) {
 // 전체 음식점 리스트 표시 + 마지막 카드에 추천
 function displayPlaceList(places, randomPlace) {
     const resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = ""; // 초기화
+    resultDiv.innerHTML = "";
 
-    places.forEach((place, index) => {
+    places.forEach((place) => {
         const card = document.createElement("div");
         card.className = "card";
         card.style.cursor = "pointer";
@@ -87,26 +87,40 @@ function displayPlaceList(places, randomPlace) {
             <p>거리: ${place.distance}m</p>
         `;
 
-        // 클릭 시 카카오맵 링크 열기
         card.addEventListener("click", () => {
             window.open(place.place_url, "_blank");
         });
 
-        // 랜덤 추천 음식점이면 하이라이트
-        if (place.id === randomPlace.id) {
-            card.style.backgroundColor = "#fffae6";
-            card.style.border = "2px solid #ffcd00";
-        }
-
         resultDiv.appendChild(card);
     });
 
-    // 상태 텍스트 업데이트
-    document.getElementById("status").innerText = "🎯 오늘의 추천 점심!";
-    document.getElementById("placeName").innerText = randomPlace.place_name;
-    document.getElementById("distance").innerText = `거리: ${randomPlace.distance}m`;
+    // 추천 식당 모달 띄우기
+    showRecommendModal(randomPlace);
+}
 
-    const linkEl = document.getElementById("mapLink");
-    linkEl.href = randomPlace.place_url;
-    linkEl.innerText = "카카오맵에서 보기";
+// 추천 식당 모달 관련
+function showRecommendModal(place) {
+    const modal = document.getElementById("recommendModal");
+    const span = modal.querySelector(".close");
+
+    document.getElementById("modalPlaceName").innerText = place.place_name;
+    const categoryText = place.category_name ? place.category_name.split('>')[1].trim() : '';
+    document.getElementById("modalCategory").innerText = categoryText;
+    document.getElementById("modalDistance").innerText = `거리: ${place.distance}m`;
+    const link = document.getElementById("modalMapLink");
+    link.href = place.place_url;
+
+    modal.style.display = "block";
+
+    // 닫기 버튼
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // 모달 밖 클릭하면 닫기
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
